@@ -6,6 +6,7 @@ import Tippy from '@tippyjs/react/headless';
 import { useEffect, useState } from 'react';
 import { Wrapper as PopperWrapper } from '~/component/Popper';
 import SearchContent from '~/component/SearchContent';
+import Button from '~/component/Button';
 
 const cx = classNames.bind(styles);
 
@@ -121,7 +122,12 @@ function Header() {
                         </div>
                     </Tippy>
                 </div>
-                <div className={cx('action')}></div>
+                <div className={cx('action')}>
+                    <Button outline small>
+                        Up Load
+                    </Button>
+                    <Button primary>Log In</Button>
+                </div>
             </div>
         </header>
     );
