@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 
 function Button({
+    leftIcon,
     to,
     href,
     children,
@@ -28,7 +29,8 @@ function Button({
     const classes = cx('wrapper', { primary, outline, large, small, rounded });
     return (
         <Comp className={classes} {...props}>
-            <span>{children}</span>
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+            <span className={cx('title')}>{children}</span>
         </Comp>
     );
 }

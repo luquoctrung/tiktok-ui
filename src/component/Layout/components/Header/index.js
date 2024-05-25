@@ -1,14 +1,50 @@
 import styles from './Header.module.scss';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleNotch, faCircleXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import {
+    faCircleNotch,
+    faCircleQuestion,
+    faCircleXmark,
+    faEllipsisVertical,
+    faLanguage,
+    faLightbulb,
+    faMagnifyingGlass,
+    faMoon,
+} from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 import { useEffect, useState } from 'react';
 import { Wrapper as PopperWrapper } from '~/component/Popper';
 import SearchContent from '~/component/SearchContent';
 import Button from '~/component/Button';
+import Menu from '~/component/Popper/Menu';
+import { faKaggle } from '@fortawesome/free-brands-svg-icons';
+import { faKeyboard } from '@fortawesome/free-regular-svg-icons';
 
 const cx = classNames.bind(styles);
+const MenuItem = [
+    {
+        icon: <FontAwesomeIcon icon={faLightbulb} />,
+        title: 'LIVE Creator HUB',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faLanguage} />,
+        title: 'English',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard Shortcuts',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faMoon} />,
+        title: 'DarkMode',
+        input: true,
+    },
+];
 
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
@@ -127,6 +163,12 @@ function Header() {
                         Up Load
                     </Button>
                     <Button primary>Log In</Button>
+
+                    <Menu items={MenuItem}>
+                        <button className={cx('list-logo')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
